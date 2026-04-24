@@ -1,0 +1,45 @@
+{
+  "name": "cybershield-scanner",
+  "version": "2.0.0",
+  "description": "Advanced Android APK Malware Detection and Security Analysis System",
+  "main": "app.js",
+  "author": "Dhyanvendra Singh Chauhan <LNCDBTC11076>",
+  "license": "ISC",
+  "type": "commonjs",
+
+  "scripts": {
+    "start":     "node app.js",
+    "dev":       "nodemon app.js",
+    "dev:debug": "nodemon --inspect app.js",
+    "clean":     "node -e \"require('fs').readdirSync('./uploads').forEach(f => require('fs').unlinkSync('./uploads/' + f))\"",
+    "health":    "curl http://localhost:8000/api/health"
+  },
+
+  "dependencies": {
+    "adbkit-apkreader":   "^3.2.0",
+    "cors":               "^2.8.6",
+    "dotenv":             "^16.4.5",
+    "express":            "^5.2.1",
+    "express-rate-limit": "^7.4.0",
+    "helmet":             "^8.0.0",
+    "jszip":              "^3.10.1",
+    "morgan":             "^1.10.0",
+    "multer":             "^2.0.2",
+    "pdfkit":             "^0.17.2"
+  },
+
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+
+  "nodemonConfig": {
+    "watch":  ["*.js", "routes/", "services/"],
+    "ext":    "js,json",
+    "ignore": ["uploads/", "reports/", "logs/", "node_modules/"],
+    "delay":  "500"
+  },
+
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

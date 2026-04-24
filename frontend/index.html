@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberShield | Android APK Security Scanner</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     TOAST CONTAINER
+══════════════════════════════════════════════════════ -->
+<div id="toastContainer"></div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════════════════ -->
+<header id="mainHeader">
+  <div class="container header-inner">
+
+    <!-- Logo -->
+    <div class="logo">
+      <div class="logo-shield">
+        <svg viewBox="0 0 40 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 2L4 9V22C4 31.4 11 40.2 20 43C29 40.2 36 31.4 36 22V9L20 2Z"
+            stroke="#00ccff" stroke-width="2" fill="rgba(0,204,255,0.08)" />
+          <path d="M13 23L17.5 27.5L27 18"
+            stroke="#00ccff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+      <div class="logo-text-group">
+        <span class="logo-name">CYBERSHIELD</span>
+        <span class="logo-tagline">APK Security Scanner</span>
+      </div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="#home"     class="nav-link">Home</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#scanner"  class="nav-link">Scanner</a></li>
+        <li><a href="#about"    class="nav-link">About</a></li>
+      </ul>
+    </nav>
+
+    <!-- Auth + Hamburger -->
+    <div class="header-actions">
+      <button class="btn btn-ghost">Sign In</button>
+      <button class="btn btn-primary">Register</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+
+  <!-- Background grid -->
+  <div class="hero-grid"></div>
+  <div class="hero-particles" id="heroParticles"></div>
+
+  <div class="container hero-inner">
+
+    <!-- Left — Text -->
+    <div class="hero-text">
+
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Advanced Threat Detection System
+      </div>
+
+      <h1 class="hero-title">
+        Detect Android<br/>
+        <span class="gradient-text">Malware & Threats</span><br/>
+        Before They Strike
+      </h1>
+
+      <p class="hero-subtitle">
+        CyberShield performs deep APK analysis using static analysis,
+        AI classification, VirusTotal integration, certificate forensics
+        and behavioral prediction — all in seconds.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">22+</span>
+          <span class="stat-label">Malware Patterns</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">10</span>
+          <span class="stat-label">Analysis Engines</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">30+</span>
+          <span class="stat-label">Secret Types</span>
+        </div>
+      </div>
+
+      <div class="hero-cta">
+        <a href="#scanner">
+          <button class="btn btn-primary btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            </svg>
+            Scan APK Now
+          </button>
+        </a>
+        <a href="#features">
+          <button class="btn btn-ghost btn-lg">Learn More</button>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Right — Animated Shield -->
+    <div class="hero-visual">
+      <div class="shield-wrapper">
+
+        <!-- Orbit rings -->
+        <div class="orbit orbit-1">
+          <div class="orbit-dot"></div>
+        </div>
+        <div class="orbit orbit-2">
+          <div class="orbit-dot"></div>
+        </div>
+        <div class="orbit orbit-3">
+          <div class="orbit-dot"></div>
+        </div>
+
+        <!-- Main shield -->
+        <div class="shield-main">
+          <svg viewBox="0 0 120 138" fill="none" xmlns="http://www.w3.org/2000/svg" class="shield-svg">
+            <!-- Outer shield -->
+            <path d="M60 6L12 27V66C12 94.2 33 119.4 60 129C87 119.4 108 94.2 108 66V27L60 6Z"
+              stroke="#00ccff" stroke-width="2.5" fill="rgba(0,204,255,0.05)" />
+            <!-- Inner shield -->
+            <path d="M60 18L24 33V66C24 87.6 40.2 107.4 60 114C79.8 107.4 96 87.6 96 66V33L60 18Z"
+              stroke="#8a2be2" stroke-width="1.5" fill="rgba(138,43,226,0.05)" />
+            <!-- Checkmark -->
+            <path d="M40 69L52 81L80 53"
+              stroke="#00ccff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+              class="shield-check" />
+            <!-- Scan line -->
+            <line x1="24" y1="66" x2="96" y2="66"
+              stroke="#00ccff" stroke-width="1" opacity="0.4"
+              class="shield-scanline" />
+          </svg>
+
+          <!-- Pulse rings -->
+          <div class="pulse-ring pulse-ring-1"></div>
+          <div class="pulse-ring pulse-ring-2"></div>
+          <div class="pulse-ring pulse-ring-3"></div>
+        </div>
+
+        <!-- Floating labels -->
+        <div class="float-label fl-1">
+          <span class="fl-dot fl-green"></span> Static Analysis
+        </div>
+        <div class="float-label fl-2">
+          <span class="fl-dot fl-cyan"></span> Threat Intel
+        </div>
+        <div class="float-label fl-3">
+          <span class="fl-dot fl-purple"></span> ML Classifier
+        </div>
+        <div class="float-label fl-4">
+          <span class="fl-dot fl-orange"></span> Cert Analysis
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Scroll to explore</span>
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     FEATURES
+══════════════════════════════════════════════════════ -->
+<section class="features" id="features">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-eyebrow">What We Analyze</span>
+      <h2 class="section-title">10 Security Analysis Engines</h2>
+      <p class="section-subtitle">
+        Every APK is inspected through multiple independent engines,
+        each scoring a different attack surface.
+      </p>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card" data-delay="0">
+        <div class="feature-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="1.8">
+            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <h3>Permission Analysis</h3>
+        <p>Detects 28 high-risk and 21 medium-risk permissions with dangerous combination detection.</p>
+        <div class="feature-tag">28 High-Risk Perms</div>
+      </div>
+
+      <div class="feature-card" data-delay="1">
+        <div class="feature-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="1.8">
+            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <h3>Static Code Analysis</h3>
+        <p>Scans APK binary for 52 suspicious APIs, obfuscation patterns and malicious string signatures.</p>
+        <div class="feature-tag">52 API Signatures</div>
+      </div>
+
+      <div class="feature-card" data-delay="2">
+        <div class="feature-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="1.8">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>Malware Pattern Detection</h3>
+        <p>Identifies 22 malware patterns across Banking Trojans, RATs, Stalkerware, Droppers and more.</p>
+        <div class="feature-tag">22 Pattern Types</div>
+      </div>
+
+      <div class="feature-card" data-delay="3">
+        <div class="feature-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+          </svg>
+        </div>
+        <h3>Threat Intelligence</h3>
+        <p>Real-time VirusTotal API and MalwareBazaar lookup with 70+ known malicious domain checks.</p>
+        <div class="feature-tag">VirusTotal + MalwareBazaar</div>
+      </div>
+
+      <div class="feature-card" data-delay="4">
+        <div class="feature-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="1.8">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+          </svg>
+        </div>
+        <h3>Secret & Credential Scan</h3>
+        <p>Detects 30+ hardcoded secret types — AWS keys, Stripe, GitHub tokens, crypto wallets and more.</p>
+        <div class="feature-tag">30+ Secret Types</div>
+      </div>
+
+      <div class="feature-card" data-delay="5">
+        <div class="feature-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="1.8">
+            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+          </svg>
+        </div>
+        <h3>AI Malware Classifier</h3>
+        <p>Weighted classification across 10 malware families with multi-label support and confidence scoring.</p>
+        <div class="feature-tag">10 Malware Families</div>
+      </div>
+
+      <div class="feature-card" data-delay="6">
+        <div class="feature-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="1.8">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <h3>Behavior Prediction</h3>
+        <p>Predicts 29 runtime behaviors across 7 categories including C2 communication and screen capture.</p>
+        <div class="feature-tag">29 Behaviors</div>
+      </div>
+
+      <div class="feature-card" data-delay="7">
+        <div class="feature-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="1.8">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0110 0v4"/>
+          </svg>
+        </div>
+        <h3>Certificate Forensics</h3>
+        <p>Extracts and validates signing certificates — detects debug certs, weak algorithms and known malware certs.</p>
+        <div class="feature-tag">V1/V2/V3 Schemes</div>
+      </div>
+
+      <div class="feature-card" data-delay="8">
+        <div class="feature-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="1.8">
+            <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
+            <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+          </svg>
+        </div>
+        <h3>URL & Network Analysis</h3>
+        <p>Scans extracted URLs for C2 patterns, DGA domains, Tor hidden services and phishing indicators.</p>
+        <div class="feature-tag">C2 Detection</div>
+      </div>
+
+      <div class="feature-card" data-delay="9">
+        <div class="feature-icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="1.8">
+            <circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/>
+          </svg>
+        </div>
+        <h3>Fake App Detection</h3>
+        <p>Identifies brand impersonation across 26 targets including Indian banks, UPI apps and government apps.</p>
+        <div class="feature-tag">26 Brand Targets</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SCANNER
+══════════════════════════════════════════════════════ -->
+<section class="scanner-section" id="scanner">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-eyebrow">Analyze Now</span>
+      <h2 class="section-title">APK Security Scanner</h2>
+      <p class="section-subtitle">
+        Upload any Android APK file for instant deep security analysis.
+        Supports up to 100MB.
+      </p>
+    </div>
+
+
+    <!-- ── Upload Area ─────────────────────────────── -->
+    <div class="upload-zone" id="uploadArea">
+
+      <div class="upload-zone-inner">
+
+        <div class="upload-icon-wrap">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="1.5">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+        </div>
+
+        <h3 class="upload-title">Drop your APK file here</h3>
+        <p class="upload-subtitle">or click to browse — Max 100MB</p>
+
+        <div class="upload-formats">
+          <span class="format-tag">.apk</span>
+        </div>
+
+        <input type="file" id="fileInput" class="file-input" accept=".apk" />
+
+        <button class="btn btn-primary btn-lg upload-btn"
+          onclick="document.getElementById('fileInput').click()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          Browse File
+        </button>
+
+      </div>
+
+      <!-- Corner accents -->
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+
+    </div>
+
+
+    <!-- ── Scan Loader ─────────────────────────────── -->
+    <div id="scanLoader" class="scan-loader">
+      <div class="loader-card">
+
+        <!-- Animated shield -->
+        <div class="loader-shield">
+          <svg viewBox="0 0 80 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40 4L8 18V44C8 62.8 22 79.6 40 86C58 79.6 72 62.8 72 44V18L40 4Z"
+              stroke="#00ccff" stroke-width="2" fill="rgba(0,204,255,0.06)" />
+            <path class="loader-shield-fill" d="M40 4L8 18V44C8 62.8 22 79.6 40 86C58 79.6 72 62.8 72 44V18L40 4Z"
+              fill="rgba(0,204,255,0.03)" />
+          </svg>
+          <div class="loader-shield-scan"></div>
+        </div>
+
+        <h3 id="scanStatus" class="loader-status">Initializing Scanner...</h3>
+        <p  id="scanSubStatus" class="loader-substatus">Preparing analysis pipeline</p>
+
+        <!-- Progress bar -->
+        <div class="progress-track" id="progressBar">
+          <div class="progress-fill" id="progressFill"></div>
+          <div class="progress-glow"></div>
+        </div>
+
+        <!-- Step indicators -->
+        <div class="step-indicators">
+          <div class="step-dot active" data-step="0"></div>
+          <div class="step-dot" data-step="1"></div>
+          <div class="step-dot" data-step="2"></div>
+          <div class="step-dot" data-step="3"></div>
+          <div class="step-dot" data-step="4"></div>
+          <div class="step-dot" data-step="5"></div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════════
+         RESULTS
+    ══════════════════════════════════════════════ -->
+    <div id="results" class="results-section">
+
+      <!-- ── Score Hero ──────────────────────────── -->
+      <div class="score-hero">
+
+        <div class="score-gauge-wrap">
+          <canvas id="riskGauge"></canvas>
+          <div class="score-center">
+            <div class="score-value">0%</div>
+            <div class="score-label">SAFE</div>
+          </div>
+        </div>
+
+        <div class="score-meta">
+          <div class="score-meta-item">
+            <span class="smi-label">Scan ID</span>
+            <span class="smi-value mono" id="scanId">—</span>
+          </div>
+          <div class="score-meta-item">
+            <span class="smi-label">Package</span>
+            <span class="smi-value mono" id="packageName">—</span>
+          </div>
+          <div class="score-meta-item">
+            <span class="smi-label">App Name</span>
+            <span class="smi-value" id="appName">—</span>
+          </div>
+          <div class="score-meta-item">
+            <span class="smi-label">File Size</span>
+            <span class="smi-value" id="apkSize">—</span>
+          </div>
+          <div class="score-meta-item">
+            <span class="smi-label">Trust Status</span>
+            <span class="smi-value" id="trustedBadge">—</span>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- ── Result Tabs ─────────────────────────── -->
+      <div class="result-tabs">
+        <button class="tab-btn active" data-tab="overview">Overview</button>
+        <button class="tab-btn" data-tab="permissions">Permissions</button>
+        <button class="tab-btn" data-tab="malware">Malware</button>
+        <button class="tab-btn" data-tab="intelligence">Intelligence</button>
+        <button class="tab-btn" data-tab="secrets">Secrets</button>
+        <button class="tab-btn" data-tab="fakeapp">Fake App</button>
+      </div>
+
+
+      <!-- ── TAB: Overview ───────────────────────── -->
+      <div class="tab-panel active" id="tab-overview">
+        <div class="panel-grid">
+
+          <!-- App Info -->
+          <div class="result-card">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="2">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                <line x1="12" y1="18" x2="12.01" y2="18"/>
+              </svg>
+              <h4>Application Info</h4>
+            </div>
+            <div class="card-body kv-list">
+              <div class="kv-row"><span class="kv-key">App Name</span>     <span class="kv-val" id="appNameFull">—</span></div>
+              <div class="kv-row"><span class="kv-key">Package</span>      <span class="kv-val mono small" id="packageNameFull">—</span></div>
+              <div class="kv-row"><span class="kv-key">Version</span>      <span class="kv-val" id="apkVersion">—</span></div>
+              <div class="kv-row"><span class="kv-key">File Name</span>    <span class="kv-val mono small" id="apkFileName">—</span></div>
+              <div class="kv-row"><span class="kv-key">File Size</span>    <span class="kv-val" id="apkSizeFull">—</span></div>
+              <div class="kv-row"><span class="kv-key">Min SDK</span>      <span class="kv-val" id="minSdk">—</span></div>
+              <div class="kv-row"><span class="kv-key">Target SDK</span>   <span class="kv-val" id="targetSdk">—</span></div>
+              <div class="kv-row"><span class="kv-key">Permissions</span>  <span class="kv-val" id="totalPermissions">—</span></div>
+            </div>
+          </div>
+
+          <!-- Hashes -->
+          <div class="result-card">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="2">
+                <line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/>
+                <line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/>
+              </svg>
+              <h4>Cryptographic Hashes</h4>
+            </div>
+            <div class="card-body kv-list">
+              <div class="kv-row col">
+                <span class="kv-key">MD5</span>
+                <span class="kv-val mono small hash-val" id="hashMd5">—</span>
+              </div>
+              <div class="kv-row col">
+                <span class="kv-key">SHA1</span>
+                <span class="kv-val mono small hash-val" id="hashSha1">—</span>
+              </div>
+              <div class="kv-row col">
+                <span class="kv-key">SHA256</span>
+                <span class="kv-val mono small hash-val" id="hashSha256">—</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Score Breakdown Chart -->
+          <div class="result-card card-wide">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+              <h4>Risk Score Breakdown</h4>
+            </div>
+            <div class="card-body">
+              <canvas id="riskChart" height="180"></canvas>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ── TAB: Permissions ────────────────────── -->
+      <div class="tab-panel" id="tab-permissions">
+        <div class="panel-grid">
+
+          <div class="result-card">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <h4>Flagged Permissions</h4>
+              <span class="card-count" id="permFlaggedCount">0</span>
+            </div>
+            <div class="card-body">
+              <ul class="finding-list" id="permissionList"></ul>
+            </div>
+          </div>
+
+          <div class="result-card">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff073a" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              <h4>Dangerous Combinations</h4>
+              <span class="card-count danger" id="comboCount">0</span>
+            </div>
+            <div class="card-body">
+              <ul class="finding-list" id="comboList"></ul>
+            </div>
+          </div>
+
+          <div class="result-card card-wide">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+              </svg>
+              <h4>Suspicious APIs Detected</h4>
+              <span class="card-count" id="apiCount">0</span>
+            </div>
+            <div class="card-body">
+              <ul class="finding-list" id="apiList"></ul>
+            </div>
+          </div>
+
+          <div class="result-card">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+              </svg>
+              <h4>String Pattern Findings</h4>
+            </div>
+            <div class="card-body">
+              <ul class="finding-list" id="stringFindingsList"></ul>
+            </div>
+          </div>
+
+          <div class="result-card">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffb300" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <h4>Obfuscation Indicators</h4>
+            </div>
+            <div class="card-body">
+              <ul class="finding-list" id="obfuscationList"></ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ── TAB: Malware ────────────────────────── -->
+      <div class="tab-panel" id="tab-malware">
+        <div class="panel-grid">
+
+          <div class="result-card">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff073a" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <h4>Malware Patterns</h4>
+              <span id="malwareVerdict"></span>
+            </div>
+            <div class="card-body">
+              <ul class="finding-list" id="malwareList"></ul>
+            </div>
+          </div>
+
+          <div class="result-card">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+              <h4>AI Threat Classification</h4>
+              <span id="mlConfidenceBadge"></span>
+            </div>
+            <div class="card-body kv-list">
+              <div class="kv-row">
+                <span class="kv-key">Primary Type</span>
+                <span class="kv-val" id="mlPrimaryType">—</span>
+              </div>
+              <div class="kv-row">
+                <span class="kv-key">Confidence</span>
+                <span class="kv-val" id="mlConfidence">—</span>
+              </div>
+              <div class="kv-row">
+                <span class="kv-key">Score</span>
+                <span class="kv-val" id="mlPrimaryScore">—</span>
+              </div>
+              <div class="kv-row">
+                <span class="kv-key">Multi-Threat</span>
+                <span class="kv-val" id="mlMultiThreat">—</span>
+              </div>
+              <div class="kv-row col">
+                <span class="kv-key">Description</span>
+                <span class="kv-val small" id="mlPrimaryDescription">—</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-card card-wide">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+              <h4>All Detected Threat Types</h4>
+            </div>
+            <div class="card-body">
+              <ul class="finding-list rich-list" id="mlDetectedTypes"></ul>
+            </div>
+          </div>
+
+          <div class="result-card card-wide">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+              <h4>Predicted Runtime Behaviors</h4>
+              <span id="dynamicVerdict"></span>
+            </div>
+            <div class="card-body">
+              <div class="behavior-stats" id="behaviorStats"></div>
+              <ul class="finding-list" id="dynamicList"></ul>
+              <p class="analysis-note" id="dynamicNote"></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ── TAB: Intelligence ───────────────────── -->
+      <div class="tab-panel" id="tab-intelligence">
+        <div class="panel-grid">
+
+          <div class="result-card">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              </svg>
+              <h4>Threat Intelligence</h4>
+            </div>
+            <div class="card-body">
+              <div class="intel-status-grid">
+                <div class="intel-status-item">
+                  <span class="intel-label">VirusTotal</span>
+                  <span id="vtStatus"></span>
+                </div>
+                <div class="intel-status-item">
+                  <span class="intel-label">MalwareBazaar</span>
+                  <span id="mbStatus"></span>
+                </div>
+              </div>
+              <a id="vtLink" href="#" target="_blank" class="vt-link" style="display:none">
+                View on VirusTotal →
+              </a>
+              <ul class="finding-list" id="threatIntelList"></ul>
+            </div>
+          </div>
+
+          <div class="result-card">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="2">
+                <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
+                <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+              </svg>
+              <h4>URL Analysis</h4>
+              <div class="card-stats">
+                <span>Total: <b id="urlTotal">0</b></span>
+                <span>Suspicious: <b id="urlSuspicious">0</b></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <ul class="finding-list" id="urlList"></ul>
+            </div>
+          </div>
+
+          <div class="result-card">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="2">
+                <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+              </svg>
+              <h4>Suspicious Domains</h4>
+            </div>
+            <div class="card-body">
+              <ul class="finding-list" id="domainList"></ul>
+            </div>
+          </div>
+
+          <div class="result-card">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M3 9h18M9 21V9"/>
+              </svg>
+              <h4>Certificate Analysis</h4>
+            </div>
+            <div class="card-body kv-list">
+              <div class="kv-row"><span class="kv-key">Common Name</span>   <span class="kv-val" id="certCommonName">—</span></div>
+              <div class="kv-row"><span class="kv-key">Organization</span>  <span class="kv-val" id="certOrganization">—</span></div>
+              <div class="kv-row"><span class="kv-key">Country</span>       <span class="kv-val" id="certCountry">—</span></div>
+              <div class="kv-row"><span class="kv-key">V2 Signature</span>  <span class="kv-val" id="certV2Signature">—</span></div>
+              <div class="kv-row"><span class="kv-key">Signing Type</span>  <span class="kv-val" id="certSigningType">—</span></div>
+              <div class="kv-row"><span class="kv-key">Validity</span>      <span class="kv-val" id="certValidity">—</span></div>
+              <ul class="finding-list" id="certFindingsList" style="margin-top:12px"></ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ── TAB: Secrets ────────────────────────── -->
+      <div class="tab-panel" id="tab-secrets">
+        <div class="panel-grid">
+
+          <div class="result-card card-wide">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff073a" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0110 0v4"/>
+              </svg>
+              <h4>Hardcoded Secrets & Credentials</h4>
+              <div class="card-stats">
+                <span>Critical: <b id="secretCritical" style="color:#ff073a">0</b></span>
+                <span>High: <b id="secretHigh" style="color:#ff6b35">0</b></span>
+                <span>Total: <b id="secretTotal">0</b></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div id="credLeakWarning" class="cred-leak-warning" style="display:none">
+                ⚠ CRITICAL: Hardcoded credentials detected — these may already be compromised
+              </div>
+              <ul class="finding-list" id="secretList"></ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ── TAB: Fake App ───────────────────────── -->
+      <div class="tab-panel" id="tab-fakeapp">
+        <div class="panel-grid">
+
+          <div class="result-card card-wide">
+            <div class="card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="2">
+                <circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/>
+              </svg>
+              <h4>Brand Impersonation Detection</h4>
+            </div>
+            <div class="card-body">
+              <div class="brand-matches-row">
+                <span class="kv-key">Impersonated Brands:</span>
+                <span id="brandMatches"></span>
+              </div>
+              <ul class="finding-list" id="fakeAppList" style="margin-top:12px"></ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ── Action Buttons ──────────────────────── -->
+      <div class="result-actions">
+        <button class="btn btn-primary btn-lg" id="downloadReport">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download Full Report
+        </button>
+        <button class="btn btn-ghost btn-lg" id="scanAnotherBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="1 4 1 10 7 10"/>
+            <path d="M3.51 15a9 9 0 102.13-9.36L1 10"/>
+          </svg>
+          Scan Another APK
+        </button>
+      </div>
+
+    </div>
+    <!-- /results -->
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════════════════ -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-inner">
+
+      <div class="about-text">
+        <span class="section-eyebrow">About the Project</span>
+        <h2 class="section-title" style="text-align:left">Built for Real-World<br/>Threat Detection</h2>
+        <p class="about-desc">
+          CyberShield is a production-grade Android APK security analysis system
+          developed as a major project at LNCT University, Bhopal. It integrates
+          real threat intelligence APIs, multi-engine analysis and professional
+          PDF reporting.
+        </p>
+        <div class="about-tags">
+          <span class="about-tag">Node.js</span>
+          <span class="about-tag">Express.js</span>
+          <span class="about-tag">VirusTotal API</span>
+          <span class="about-tag">MalwareBazaar</span>
+          <span class="about-tag">Chart.js</span>
+          <span class="about-tag">PDFKit</span>
+          <span class="about-tag">JSZip</span>
+          <span class="about-tag">adbkit-apkreader</span>
+        </div>
+      </div>
+
+      <div class="about-stats-grid">
+        <div class="about-stat">
+          <div class="about-stat-num">10</div>
+          <div class="about-stat-label">Analysis Engines</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">52</div>
+          <div class="about-stat-label">API Signatures</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">29</div>
+          <div class="about-stat-label">Behavior Checks</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">30+</div>
+          <div class="about-stat-label">Secret Types</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-shield small">
+            <svg viewBox="0 0 40 46" fill="none">
+              <path d="M20 2L4 9V22C4 31.4 11 40.2 20 43C29 40.2 36 31.4 36 22V9L20 2Z"
+                stroke="#00ccff" stroke-width="2" fill="rgba(0,204,255,0.08)"/>
+              <path d="M13 23L17.5 27.5L27 18"
+                stroke="#00ccff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="logo-name">CYBERSHIELD</span>
+        </div>
+        <p class="footer-desc">
+          Advanced Android APK malware detection powered by
+          static analysis, AI classification and real threat intelligence.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#scanner">Scanner</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Analysis Engines</h4>
+        <ul>
+          <li>Static Code Analysis</li>
+          <li>Threat Intelligence</li>
+          <li>ML Classifier</li>
+          <li>Certificate Forensics</li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>LNCT University, Bhopal</li>
+          <li>Dhyanvendra Singh Chauhan</li>
+          <li>B.Tech CSE — 2026</li>
+          <li>LNCDBTC11076</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 CyberShield — Dhyanvendra Singh Chauhan</span>
+      <span>LNCT University, Bhopal (M.P.)</span>
+    </div>
+
+  </div>
+</footer>
+
+
+<script src="script.js"></script>
+
+<!-- Tab switching -->
+<script>
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+      btn.classList.add("active");
+      const panel = document.getElementById("tab-" + btn.dataset.tab);
+      if (panel) panel.classList.add("active");
+    });
+  });
+
+  // Hamburger menu
+  const hamburger = document.getElementById("hamburger");
+  const mainNav   = document.getElementById("mainNav");
+  if (hamburger && mainNav) {
+    hamburger.addEventListener("click", () => {
+      mainNav.classList.toggle("open");
+      hamburger.classList.toggle("open");
+    });
+  }
+
+  // Header scroll effect
+  window.addEventListener("scroll", () => {
+    const header = document.getElementById("mainHeader");
+    if (header) {
+      header.classList.toggle("scrolled", window.scrollY > 50);
+    }
+  });
+  // DIRECT FIX FOR BROWSE BUTTON - Runs immediately
+  (function() {
+    console.log("Fix script loaded");
+    
+    // Wait for DOM to be ready
+    function init() {
+      console.log("DOM ready, fixing browse button");
+      
+      const fileInput = document.getElementById('fileInput');
+      const uploadBtn = document.querySelector('.upload-btn');
+      const uploadZone = document.getElementById('uploadArea');
+      
+      console.log("File input:", fileInput);
+      console.log("Upload button:", uploadBtn);
+      
+      // Fix 1: Direct click handler on button
+      if (uploadBtn && fileInput) {
+        // Remove any existing onclick
+        uploadBtn.removeAttribute('onclick');
+        
+        // Add new click handler
+        uploadBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log("Button clicked, opening file picker");
+          fileInput.click();
+        });
+      }
+      
+      // Fix 2: Make upload zone clickable
+      if (uploadZone && fileInput) {
+        uploadZone.addEventListener('click', function(e) {
+          // Don't trigger if clicking on the button (already handled)
+          if (e.target.closest('.upload-btn')) return;
+          console.log("Upload zone clicked, opening file picker");
+          fileInput.click();
+        });
+      }
+      
+      // Fix 3: Handle file selection
+      if (fileInput) {
+        fileInput.addEventListener('change', function(e) {
+          console.log("File selected:", fileInput.files[0]?.name);
+          if (fileInput.files && fileInput.files[0]) {
+            const file = fileInput.files[0];
+            
+            // Validate file
+            if (!file.name.toLowerCase().endsWith('.apk')) {
+              alert('Please select a valid APK file');
+              fileInput.value = '';
+              return;
+            }
+            
+            if (file.size > 100 * 1024 * 1024) {
+              alert('File too large. Maximum size is 100MB');
+              fileInput.value = '';
+              return;
+            }
+            
+            // Call the upload function if it exists
+            if (typeof handleFileUpload === 'function') {
+              handleFileUpload(file);
+            } else {
+              console.log("handleFileUpload not found, using direct upload");
+              directUpload(file);
+            }
+          }
+        });
+      }
+    }
+    
+    // Direct upload function as fallback
+    async function directUpload(file) {
+      console.log("Direct upload started for:", file.name);
+      
+      const formData = new FormData();
+      formData.append('apk', file);
+      
+      const uploadArea = document.getElementById('uploadArea');
+      const loader = document.getElementById('scanLoader');
+      const results = document.getElementById('results');
+      
+      // Show loader
+      if (uploadArea) uploadArea.style.display = 'none';
+      if (loader) loader.style.display = 'flex';
+      
+      try {
+        const response = await fetch('/scan', {
+          method: 'POST',
+          body: formData
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(data.message || 'Scan failed');
+        }
+        
+        console.log("Scan complete:", data);
+        
+        // Hide loader
+        if (loader) loader.style.display = 'none';
+        
+        // Show results
+        if (results) {
+          results.style.display = 'block';
+          results.classList.add('visible');
+        }
+        
+        // Display results if function exists
+        if (typeof displayResults === 'function') {
+          displayResults(data);
+        } else {
+          alert('Scan complete! Score: ' + data.finalRiskScore + '% - ' + data.classification);
+        }
+        
+      } catch (err) {
+        console.error("Upload error:", err);
+        if (loader) loader.style.display = 'none';
+        if (uploadArea) uploadArea.style.display = 'block';
+        alert('Scan failed: ' + err.message);
+      }
+    }
+    
+    // Run when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+
+</body>
+</html>
